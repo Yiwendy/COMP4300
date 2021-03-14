@@ -1,0 +1,35 @@
+# //sage.eng.auburn.edu/homes/Desktop/New folder/transcript3
+vsim -gui work.alu
+# vsim 
+# Start time: 21:28:17 on Feb 24,2021
+# ** Note: (vsim-8009) Loading existing optimized design _opt
+# 
+# Loading std.standard
+# Loading work.dlx_types
+# Loading work.bv_arithmetic(body)
+# Loading work.alu(behaviour)#1
+add wave -position insertpoint  \
+sim:/alu/operand1
+add wave -position insertpoint  \
+sim:/alu/operand2
+add wave -position insertpoint  \
+sim:/alu/operation
+add wave -position insertpoint  \
+sim:/alu/signed
+add wave -position insertpoint  \
+sim:/alu/result
+add wave -position insertpoint  \
+sim:/alu/error
+force -freeze sim:/alu/operand1 32'h00000005 0
+force -freeze sim:/alu/operand2 32'hFFFFFFFF 0
+force -freeze sim:/alu/operation 4'he 0
+run
+force -freeze sim:/alu/signed 1 0
+run
+force -freeze sim:/alu/signed 0 0
+force -freeze sim:/alu/operand1 32'h11111111 0
+run
+force -freeze sim:/alu/signed 1 0
+run
+quit -sim
+set PrefMain(file) {//sage.eng.auburn.edu/homes/Desktop/New folder/transcript4}
